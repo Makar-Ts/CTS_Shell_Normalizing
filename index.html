@@ -5,25 +5,136 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
+    <link 
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+        rel="stylesheet" 
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
+        crossorigin="anonymous"
+    > <!-- bootstrap -->
     <style>
-        canvas {
+        #canvas {
             border: 1px solid black;
 
             background-color: black;
+
+            width: clamp(1em, 100%, 800px);
+            min-width: 40%;
+
+            margin-bottom: 50%;
+        }
+
+        form {
+            width: clamp(1em, 100%, 800px);
+        }
+
+        .no_top_border {
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+
+        .no_bottom_border {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        .w-30 {
+            width: 30%;
         }
     </style>
 </head>
-<body>
-    <canvas
+<body data-bs-theme="dark">
+    <div class="container">
+        <h1>CTS Shell Normalization</h1>
+
+        <form action="" class="mb-3 mt-3">
+            <select id="ammoType" class="form-select no_bottom_border" aria-label="Default select example">
+                <option value="APFSDS">APFSDS</option>
+                <option value="AP">Other KE Rounds</option>
+            </select>
+            <div class="input-group">
+                <span class="input-group-text  no_top_border no_bottom_border" id="basic-addon1">Pen.</span>
+                <span class="input-group-text  no_top_border no_bottom_border" id="basic-addon1">0deg</span>
+                <input id="pen0" type="number" value=478 class="form-control" placeholder="0 degreee pen" aria-label="0 deg" aria-describedby="basic-addon1">
+                <span class="input-group-text  no_top_border no_bottom_border" id="basic-addon1">60deg</span>
+                <input id="pen60" type="number" value=281 class="form-control no_top_border no_bottom_border" placeholder="60 degreee pen" aria-label="60 deg" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group">
+                <span class="input-group-text  no_top_border" id="basic-addon1">Ricochet angle</span>
+                <input id="ric_angle" type="number" value=81 class="form-control no_top_border" placeholder="Ricochet angle" aria-label="Ricochet angle" aria-describedby="basic-addon1">
+            </div>
+        </form>
+
+        <form action="" class="mb-3 mt-3">
+            <div class="input-group">
+                <span class="input-group-text no_bottom_border w-100" id="basic-addon1">Armor Plane no.1</span>
+            </div>
+            <div class="input-group">
+                <span class="input-group-text no_top_border no_bottom_border w-30" id="basic-addon1">Normal Vector</span>
+                <span class="input-group-text no_top_border no_bottom_border" id="basic-addon1">X</span>
+                <input id="nx_1" type="number" value=1 class="form-control" placeholder="X component" aria-label="X component" aria-describedby="basic-addon1">
+                <span class="input-group-text no_bottom_border" id="basic-addon1">Y</span>
+                <input id="ny_1" type="number" value=2 class="form-control no_top_border no_bottom_border" placeholder="Y component" aria-label="Y component" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group">
+                <span class="input-group-text  no_top_border no_bottom_border w-30" id="basic-addon1">Position</span>
+                <span class="input-group-text  no_top_border no_bottom_border" id="basic-addon1">X</span>
+                <input id="px_1" type="number" value=100 class="form-control" placeholder="X component" aria-label="X component" aria-describedby="basic-addon1">
+                <span class="input-group-text  no_top_border no_bottom_border" id="basic-addon1">Y</span>
+                <input id="py_1" type="number" value=100 class="form-control no_top_border no_bottom_border" placeholder="Y component" aria-label="Y component" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group">
+                <span class="input-group-text  no_top_border w-30" id="basic-addon1">Props.</span>
+                <span class="input-group-text  no_top_border" id="basic-addon1">Thick.</span>
+                <input id="thick_1" type="number" value=3.7 class="form-control" placeholder="Thickness" aria-label="Thickness" aria-describedby="basic-addon1">
+                <span class="input-group-text  no_top_border" id="basic-addon1">/</span>
+                <input id="mult_1" type="number" value=0.5 class="form-control no_top_border" placeholder="Multiplier" aria-label="Multiplier" aria-describedby="basic-addon1">
+            </div>
+        </form>
+
+        <form action="" class="mb-3 mt-3">
+            <div class="input-group">
+                <span class="input-group-text no_bottom_border w-100" id="basic-addon1">Armor Plane no.2</span>
+            </div>
+            <div class="input-group">
+                <span class="input-group-text no_top_border no_bottom_border w-30" id="basic-addon1">Normal Vector</span>
+                <span class="input-group-text no_top_border no_bottom_border" id="basic-addon1">X</span>
+                <input id="nx_2" type="number" value=1 class="form-control" placeholder="X component" aria-label="X component" aria-describedby="basic-addon1">
+                <span class="input-group-text no_bottom_border" id="basic-addon1">Y</span>
+                <input id="ny_2" type="number" value=2 class="form-control no_top_border no_bottom_border" placeholder="Y component" aria-label="Y component" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group">
+                <span class="input-group-text  no_top_border no_bottom_border w-30" id="basic-addon1">Position</span>
+                <span class="input-group-text  no_top_border no_bottom_border" id="basic-addon1">X</span>
+                <input id="px_2" type="number" value=100 class="form-control" placeholder="X component" aria-label="X component" aria-describedby="basic-addon1">
+                <span class="input-group-text  no_top_border no_bottom_border" id="basic-addon1">Y</span>
+                <input id="py_2" type="number" value=100 class="form-control no_top_border no_bottom_border" placeholder="Y component" aria-label="Y component" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group">
+                <span class="input-group-text  no_top_border w-30" id="basic-addon1">Props.</span>
+                <span class="input-group-text  no_top_border" id="basic-addon1">Thick.</span>
+                <input id="thick_2" type="number" value=6 class="form-control" placeholder="Thickness" aria-label="Thickness" aria-describedby="basic-addon1">
+                <span class="input-group-text  no_top_border" id="basic-addon1">/</span>
+                <input id="mult_2" type="number" value=0.5 class="form-control no_top_border" placeholder="Multiplier" aria-label="Multiplier" aria-describedby="basic-addon1">
+            </div>
+        </form>
+
+        <canvas
         id="canvas"
         height="800"
         width="800"
     ></canvas>
+    </div>
 
+
+    <script 
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
+        crossorigin="anonymous">
+    </script> <!-- bootstrap -->
     <script
-    type="text/javascript"
-    src="https://unpkg.com/@js-basics/vector/build/iife"
-    ></script>
+        type="text/javascript"
+        src="https://unpkg.com/@js-basics/vector/build/iife">
+    </script>
     <script src="./index.js" type="module"></script>
 </body>
 </html>

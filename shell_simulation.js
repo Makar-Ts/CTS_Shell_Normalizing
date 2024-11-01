@@ -81,7 +81,7 @@ function calculateShellNormalization(surfaceNormal, rayDir, armorStats, shellSta
     } else {
         var refDir = rayDir
     }
-    console.log(`index: ${index}, angle: ${angleDeg}, rayDir: ${rayDir}, refDir: ${refDir}`)
+    //console.log(`index: ${index}, angle: ${angleDeg}, rayDir: ${rayDir}, refDir: ${refDir}`)
 
     return refDir
 }
