@@ -1,4 +1,4 @@
-const { calc, vector, victor, point, ipoint } = basics.vector;
+import { vector } from './vector/index.js'
 import { intersection } from './vector_utils.js'
 import { calculateShellNormalization } from './shell_simulation.js'
 import { drawVector, drawPenSimulation, drawArmorPlane } from './draw.js'

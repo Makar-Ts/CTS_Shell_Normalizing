@@ -1,4 +1,4 @@
-const { calc, vector, victor, point, ipoint } = basics.vector;
+import { calc } from './vector/index.js'
 
 
 const radians = (deg) => deg * Math.PI / 180.0

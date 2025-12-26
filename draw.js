@@ -1,4 +1,4 @@
-const { calc, vector, victor, point, ipoint } = basics.vector;
+import { vector, calc } from './vector/index.js'
 
 
 function drawVector(context, vector, startPos = vector(0, 0), color = "black", size=1) {

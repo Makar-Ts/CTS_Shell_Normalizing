@@ -1,4 +1,4 @@
-const { calc, vector, victor, point, ipoint } = basics.vector;
+import { vector } from './vector/index.js'
 
 
 function intersection(v1_startPos, v1_direction, v2_startPos, v2_direction) {
